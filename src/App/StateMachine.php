@@ -20,6 +20,7 @@ class StateMachine
     {
         $this->states = $states;
 
+        // by default set the active state to the first one
         if (!empty($this->states)) {
             $this->activeState = $states[0];
         }
@@ -50,6 +51,13 @@ class StateMachine
         $this->finalStates = $states;
     }
 
+    /**
+     * @param string|integer $source The state where the transition starts
+     * @param string $input The value of the input
+     * @param string|integer $destination The state where the transition ends
+     *
+     * @throws Exception When the input is not valid
+     */
     public function addTransition($source, $input, $destination)
     {
         if (!in_array($input, $this->inputs)) {
@@ -68,6 +76,11 @@ class StateMachine
         return $this->transitions;
     }
 
+    /**
+     * @param string $input The value entered by the user
+     *
+     * @throws Exception When the value is not a valid input
+     */
     public function update($input)
     {
         if (!in_array($input, $this->inputs)) {

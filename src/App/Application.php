@@ -20,7 +20,7 @@ class Application
     }
 
     /**
-     * param $input unsigned binary integer
+     * @param string $input The unsigned binary string entered by the user
      */
     private static function modThree($input)
     {
